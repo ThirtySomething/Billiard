@@ -62,6 +62,12 @@ ValidSolution = Level1 & Level2 & Level3 & Level4
 
 The C++ programm int the folder `src` will run through all possible combinations of these virtual billard balls and will apply the rules. The goal is to figure out all possible solutions for this task.
 
+## License ##
+
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0 "LGPL-3.0")
+
+**Billiard** is distributed under the terms of the **GNU LESSER GENERAL PUBLIC LICENSE**, version 3.0. The text of the license is included in the file [<code>LICENSE.TXT</code>](https://github.com/ThirtySomething/YAIP/blob/master/LICENSE.TXT "LGPL-3.0") in the project root.
+
 ## ToDo ##
 
 Speed up the calculation of the solution. Evaluate these frameworks and apply a solution to the puzzle solver source.
