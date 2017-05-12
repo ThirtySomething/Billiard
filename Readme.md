@@ -4,13 +4,13 @@
 
 Imagine the triangle of all billiard balls like this here
 
-| Level |       |       |       |       |       |       |       |       |       |       | 
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-|     4 |       |    11 |       |    12 |       |    13 |       |    14 |       |    15 | 
-|     3 |       |       |     7 |       |     8 |       |     9 |       |    10 |       | 
-|     2 |       |       |       |     4 |       |     5 |       |     6 |       |       | 
-|     1 |       |       |       |       |     2 |       |     3 |       |       |       | 
-|     0 |       |       |       |       |       |     1 |       |       |       |       | 
+| Level |       |       |       |       |       |       |       |       |       | 
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
+|     4 |    11 |       |    12 |       |    13 |       |    14 |       |    15 | 
+|     3 |       |     7 |       |     8 |       |     9 |       |    10 |       | 
+|     2 |       |       |     4 |       |     5 |       |     6 |       |       | 
+|     1 |       |       |       |     2 |       |     3 |       |       |       | 
+|     0 |       |       |       |       |     1 |       |       |       |       | 
 
 On level 0, there is one ball with index 1. On level 1, there are two balls above the ball of level 0, one with index 2 and the second with index 3. The absolute difference between the numbers of the two balls on level 1 will result in the number of the ball on level 0. Simple example to understand:
 
