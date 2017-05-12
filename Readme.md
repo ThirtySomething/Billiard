@@ -16,13 +16,13 @@ On level 0, there is one ball with index 1. On level 1, there are two balls abov
 
 | Level |       |       |       |
 | :---: | :---: | :---: | :---: |
-|     1 |     8 |       |     5 |
+|     1 |     5 |       |     8 |
 |     0 |       |     3 |       |
 
 ```
-Ball on level 0 = asb(ball upper left - ball upper right)
+Ball on level 0 = abs(ball upper left - ball upper right)
 
-              3 =             8       -       5
+              3 =             5       -       8
 ```
 
 This *group* of *two balls above one* is available at least 10 times. For each group the rule has to be valid. An extended example looks like this one
