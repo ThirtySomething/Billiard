@@ -33,4 +33,39 @@ This *group* of *two balls above one* is available at least 10 times. For each g
 |     1 |       |     8 |       |     5 |       | 
 |     0 |       |       |     3 |       |       |
 
-This C++ programm will run through all possible combinations of these 15 values and will apply the rules. The goal is to figure out all possible solutions for this task.
+## Complete ruleset ##
+
+Assume a function `CheckTriple` where you have as parameter the index of the lower ball, the upper left and the upper right. If the rule is applicable, the function returns true, otherwise false. Based on this the complete ruleset looks like this one:
+
+```
+
+Level1 = CheckTriple(0, 1, 2)
+Level2 = CheckTriple(2, 4, 5) & 
+         CheckTriple(3, 5, 6)
+Level3 = CheckTriple(4, 7, 8) &
+         CheckTriple(5, 8, 9) &
+         CheckTriple(6, 9, 10)
+Level4 = CheckTriple(7, 11, 12) &
+         CheckTriple(8, 12, 13) &
+         CheckTriple(9, 13, 14) &
+         CheckTriple(10, 13, 15)
+```
+
+And a valid solution for the puzzle will be
+
+```
+
+ValidSolution = Level1 & Level2 & Level3 & Level4
+```
+
+## Source ##
+
+The C++ programm int the folder `src` will run through all possible combinations of these virtual billard balls and will apply the rules. The goal is to figure out all possible solutions for this task.
+
+## ToDo ##
+
+Speed up the calculation of the solution. Evaluate these frameworks and apply a solution to the puzzle solver source.
+
+* [Cuda](https://developer.nvidia.com/about-cuda)
+* [OpenCL](https://www.khronos.org/opencl/)
+* [OpenMP](http://www.openmp.org/)
