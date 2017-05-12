@@ -72,7 +72,7 @@ namespace org
 			void CBilliard::SearchSolution(void)
 			{
 				// Should be volatile in case of parallel tasks
-				volatile int PermutationCount = 0;
+				volatile unsigned long long PermutationCount = 0;
 
 				do {
 					// Check the rules
