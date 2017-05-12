@@ -21,15 +21,19 @@
  * \file	main.cpp
  * \author	ThirtySomething
  * \date	2017-05-12
- * \brief	Start of Billiard puzzleS
+ * \brief	Start of Billiard puzzle
  */
-#include "billiard.h"
+#include "Billiard.h"
+#include "BilliardBruteForce.h"
+#include "BilliardClever.h"
 
 int main(int argc, char* argv[])
 {
-	org::derpaul::various::CBilliard Table;
+	org::derpaul::various::CBilliardClever TableFast;
+	org::derpaul::various::CBilliardBruteForce TableSlow;
 
-	Table.SearchSolution();
+	TableFast.SearchSolution();
+	TableSlow.SearchSolution();
 
 	return 0;
 }

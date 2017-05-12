@@ -34,24 +34,23 @@ namespace org
 	{
 		namespace various
 		{
+			typedef std::vector<int> ballset;
+
 			class CBilliard
 			{
 			public:
 				CBilliard(void);
 				virtual ~CBilliard(void);
 
-				void SearchSolution(void);
-				void ShowBalls(bool Verbose = false);
-				bool CheckRulesFit(void);
+				virtual void SearchSolution(void) = 0;
+				void ShowBalls(const ballset &Balls, bool Verbose = false);
+				bool CheckRulesFit(const ballset &Balls);
 
 			protected:
 				static const int BallMax;
 				static const std::string Delimiter;
 
-				typedef std::vector<int> ballset;
-				ballset m_Balls;
-
-				void InitBalls(void);
+				ballset InitBalls(void);
 				bool CheckTriple(int BallResult, int BallLeft, int BallRight);
 			};
 		}
