@@ -12,7 +12,7 @@ Imagine the triangle of all billiard balls like this here
 |     1 |       |       |       |     2 |       |     3 |       |       |       |
 |     0 |       |       |       |       |     1 |       |       |       |       |
 
-On level 0, there is one ball with index 1. On level 1, there are two balls above the ball of level 0, one with index 2 and the second with index 3. The absolute difference between the numbers of the two balls on level 1 will result in the number of the ball on level 0. Simple example to understand:
+On level 0, there is one ball with index 1. On level 1, there are two balls above the ball of level 0, one with index 2 and the second with index 3. The absolute difference between the numbers of the two balls on level 1 will must be the number of the ball on level 0. Simple example to understand:
 
 | Level |       |       |       |
 | :---: | :---: | :---: | :---: |
@@ -22,10 +22,10 @@ On level 0, there is one ball with index 1. On level 1, there are two balls abov
 ```
 Ball on level 0 = abs(ball upper left - ball upper right)
 
-              3 =             5       -       8
+              3 =             5       -         8
 ```
 
-This *group* of *two balls above one* is available at least 10 times. For each group the rule has to be valid. An extended example looks like this one
+This *group* of *two balls above one* is available at least 10 times. For each group the rule must be valid. An extended example looks like this one
 
 | Level |       |       |       |       |       |
 | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -55,12 +55,13 @@ And a valid solution for the puzzle will be
 
 ```
 
-ValidSolution = Level1 & Level2 & Level3 & Level4
+ValidSolution = (true == Level1) & (true == Level2) & (true == Level3) & (true == Level4)
+
 ```
 
 ## Source ##
 
-The C++ programm int the folder `src` will run through all possible combinations of these virtual billard balls and will apply the rules. The goal is to figure out all possible solutions for this task.
+The C++ programm int the folder `src` will run through all possible combinations of these virtual billard balls and will apply the rules. The goal is to figure out all possible solutions for this task. The total number of permutations are 15!, this are exactly 1.307.674.368.000 permutations - more than a trillion...
 
 ## License ##
 
