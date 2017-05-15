@@ -123,19 +123,19 @@ namespace org
 			bool CBilliard::CheckRulesFit(const ballset &Balls)
 			{
 				// The ruleset for all 10 groups
-				bool Level1 = GroupCheck(Balls[0], Balls[1], Balls[2]);
+				bool Level1 = CheckGroup(Balls[0], Balls[1], Balls[2]);
 				bool Level2 = Level1
-					&& GroupCheck(Balls[2], Balls[4], Balls[5])
-					&& GroupCheck(Balls[3], Balls[5], Balls[6]);
+					&& CheckGroup(Balls[2], Balls[4], Balls[5])
+					&& CheckGroup(Balls[3], Balls[5], Balls[6]);
 				bool Level3 = Level2
-					&& GroupCheck(Balls[4], Balls[7], Balls[8])
-					&& GroupCheck(Balls[5], Balls[8], Balls[9])
-					&& GroupCheck(Balls[6], Balls[9], Balls[10]);
+					&& CheckGroup(Balls[4], Balls[7], Balls[8])
+					&& CheckGroup(Balls[5], Balls[8], Balls[9])
+					&& CheckGroup(Balls[6], Balls[9], Balls[10]);
 				bool Level4 = Level3
-					&& GroupCheck(Balls[7], Balls[11], Balls[12])
-					&& GroupCheck(Balls[8], Balls[12], Balls[13])
-					&& GroupCheck(Balls[9], Balls[13], Balls[14])
-					&& GroupCheck(Balls[10], Balls[13], Balls[15]);
+					&& CheckGroup(Balls[7], Balls[11], Balls[12])
+					&& CheckGroup(Balls[8], Balls[12], Balls[13])
+					&& CheckGroup(Balls[9], Balls[13], Balls[14])
+					&& CheckGroup(Balls[10], Balls[13], Balls[15]);
 
 				// Returns true if its a solution, otherwise false
 				return (Level1 && Level2 && Level3 && Level4);
@@ -143,7 +143,7 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
-			bool CBilliard::GroupCheck(int BallBottom, int BallLeft, int BallRight)
+			bool CBilliard::CheckGroup(int BallBottom, int BallLeft, int BallRight)
 			{
 				// The group check
 				// |BallLeft - BallRight|

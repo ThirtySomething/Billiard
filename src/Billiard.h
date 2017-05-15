@@ -54,7 +54,7 @@ namespace org
 				virtual void DetermineSolution(void) = 0;
 				static ballset InitBalls(void);
 				static unsigned long long GetLimit(unsigned long long Base);
-				bool GroupCheck(int BallBottom, int BallLeft, int BallRight);
+				bool CheckGroup(int BallBottom, int BallLeft, int BallRight);
 				bool CheckRulesFit(const ballset &Balls);
 			};
 		}
