@@ -157,6 +157,12 @@
     <ClInclude Include="./../../src/BilliardBruteForce.h" />
     <ClInclude Include="./../../src/BilliardClever.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="run32debug.bat" />
+    <None Include="run32release.bat" />
+    <None Include="run64debug.bat" />
+    <None Include="run64release.bat" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

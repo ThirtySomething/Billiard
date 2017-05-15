@@ -40,6 +40,9 @@ namespace org
 				virtual ~CBilliardBruteForce(void);
 
 			protected:
+				static const unsigned long long PermutationsPerDot;
+				static const int DotsPerLine;
+
 				void DetermineSolution(void) override;
 			};
 		}

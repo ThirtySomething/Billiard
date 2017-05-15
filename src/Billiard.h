@@ -39,7 +39,7 @@ namespace org
 			class CBilliard
 			{
 			public:
-				CBilliard(void);
+				CBilliard(std::string CalculationMethod);
 				virtual ~CBilliard(void);
 
 				void SearchSolution(void);
@@ -50,8 +50,10 @@ namespace org
 				static const std::string Delimiter;
 
 				volatile unsigned long long m_PermutationCount;
+				std::string m_CalculationMethod;
 				virtual void DetermineSolution(void) = 0;
 				static ballset InitBalls(void);
+				static unsigned long long GetLimit(unsigned long long Base);
 				bool GroupCheck(int BallBottom, int BallLeft, int BallRight);
 				bool CheckRulesFit(const ballset &Balls);
 			};

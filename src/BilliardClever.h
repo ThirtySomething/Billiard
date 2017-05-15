@@ -41,6 +41,9 @@ namespace org
 
 			protected:
 				void DetermineSolution(void) override;
+
+				int NextBallFetch(void);
+				int NextBallCalculate(void);
 			};
 		}
 	}

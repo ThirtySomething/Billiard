@@ -41,8 +41,9 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
-			CBilliard::CBilliard(void)
+			CBilliard::CBilliard(std::string CalculationMethod)
 				: m_PermutationCount(0)
+				, m_CalculationMethod(CalculationMethod)
 			{
 			}
 
@@ -50,6 +51,13 @@ namespace org
 			//******************************************************************************
 			CBilliard::~CBilliard(void)
 			{
+			}
+
+			//******************************************************************************
+			//******************************************************************************
+			unsigned long long CBilliard::GetLimit(unsigned long long Base)
+			{
+				return ((0 == Base) || (1 == Base)) ? 1 : GetLimit(Base - 1) * Base;
 			}
 
 			//******************************************************************************
@@ -64,7 +72,7 @@ namespace org
 				auto Duration = TimeEnd - TimeStart;
 				auto Milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(Duration);
 
-				std::cout << "Number of permutations: " << m_PermutationCount << " done in " << Milliseconds.count() << " milliseconds" << std::endl;
+				std::cout << "[" << m_CalculationMethod << "] finished, [" << m_PermutationCount << "] permutations, [" << Milliseconds.count() << "] milliseconds duration" << std::endl;
 			}
 
 			//******************************************************************************

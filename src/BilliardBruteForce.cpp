@@ -36,8 +36,13 @@ namespace org
 		{
 			//******************************************************************************
 			//******************************************************************************
+			const unsigned long long CBilliardBruteForce::PermutationsPerDot = 1000000;
+			const int CBilliardBruteForce::DotsPerLine = 50;
+
+			//******************************************************************************
+			//******************************************************************************
 			CBilliardBruteForce::CBilliardBruteForce(void)
-				: CBilliard()
+				: CBilliard(__FUNCTION__)
 			{
 			}
 
@@ -67,18 +72,15 @@ namespace org
 
 					// Show a dot for each 1000000 permutations with at least
 					// maximum 50 dots each line
-					if (0 == (m_PermutationCount % 100000))
+					if (0 == (m_PermutationCount % CBilliardBruteForce::PermutationsPerDot))
 					{
-						std::cout << ".";
-						if (50 < linelength)
+						if (CBilliardBruteForce::DotsPerLine <= linelength)
 						{
 							std::cout << std::endl;
 							linelength = 0;
 						}
-						else
-						{
-							linelength++;
-						}
+						std::cout << ".";
+						linelength++;
 					}
 				} while (std::next_permutation(Balls.begin(), Balls.end()));
 			}
