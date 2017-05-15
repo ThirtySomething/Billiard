@@ -25,15 +25,15 @@
  */
 #include "Billiard.h"
 #include "BilliardBruteForce.h"
-#include "BilliardClever.h"
+#include "BilliardStrategy.h"
 
 int main(int argc, char* argv[])
 {
-	org::derpaul::various::CBilliardClever TableFast;
-	org::derpaul::various::CBilliardBruteForce TableSlow;
+	org::derpaul::various::CBilliardStrategy TableStragegy;
+	org::derpaul::various::CBilliardBruteForce TableBruteForce;
 
-	TableFast.SearchSolution();
-	TableSlow.SearchSolution();
+	TableStragegy.SearchSolution();
+	TableBruteForce.SearchSolution();
 
 	return 0;
 }

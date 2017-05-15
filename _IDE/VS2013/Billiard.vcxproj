@@ -149,13 +149,13 @@
   <ItemGroup>
     <ClCompile Include="./../../src/Billiard.cpp" />
     <ClCompile Include="./../../src/BilliardBruteForce.cpp" />
-    <ClCompile Include="./../../src/BilliardClever.cpp" />
+    <ClCompile Include="./../../src/BilliardStrategy.cpp" />
     <ClCompile Include="./../../src/main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="./../../src/Billiard.h" />
     <ClInclude Include="./../../src/BilliardBruteForce.h" />
-    <ClInclude Include="./../../src/BilliardClever.h" />
+    <ClInclude Include="./../../src/BilliardStrategy.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="run32debug.bat" />

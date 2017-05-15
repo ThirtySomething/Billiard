@@ -39,7 +39,7 @@ The C++ program in the folder `src` will solve this puzzle. There are currently 
 
 The first one, `BilliardBruteForce` will perform a brute force method to solve this puzzle. There is a huge amount of permutations for all 15 balls - you need patience and a fast computer.
 
-The second one, `BilliardClever` will perform a strategic method to solve this puzzle. There are much less permutations required because of the strategy.
+The second one, `BilliardStrategy` will follow a strategy to solve this puzzle. There are much less permutations required.
 
 Additional solvers are planned for the various frameworks as mentioned in the `ToDo`-[section](#ToDo) on this page.
 
@@ -65,7 +65,7 @@ Level4 = Level3 & CheckGroup(7, 11, 12) &
 
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0 "LGPL-3.0")
 
-**Billiard** is distributed under the terms of the **GNU LESSER GENERAL PUBLIC LICENSE**, version 3.0. The text of the license is included in the file [<code>LICENSE.TXT</code>](https://github.com/ThirtySomething/YAIP/blob/master/LICENSE.TXT "LGPL-3.0") in the project root.
+**Billiard** is distributed under the terms of the **GNU LESSER GENERAL PUBLIC LICENSE**, version 3.0. The text of the license is included in the file **LICENSE.TXT** in the project root.
 
 ## <a name="ToDo"></a>ToDo ##
 
@@ -74,7 +74,3 @@ Speed up the brute force. Evaluate these frameworks and apply a solution to the 
 * [Cuda](https://developer.nvidia.com/about-cuda)
 * [OpenCL](https://www.khronos.org/opencl/)
 * [OpenMP](http://www.openmp.org/)
-
-Additional task
-
-* Implement some clever permutation instead brute force

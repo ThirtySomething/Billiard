@@ -18,14 +18,13 @@
 //******************************************************************************
 
 /**
- * \file	BilliardClever.h
+ * \file	BilliardStrategy.cpp
  * \author	ThirtySomething
  * \date	2017-05-12
- * \brief	Clever algorithm
+ * \brief	Strategy algorithm algorithm implementation
  */
-#pragma once
-
-#include "Billiard.h"
+#include "BilliardStrategy.h"
+#include <algorithm>
 
 namespace org
 {
@@ -33,18 +32,24 @@ namespace org
 	{
 		namespace various
 		{
-			class CBilliardClever : public CBilliard
+			//******************************************************************************
+			//******************************************************************************
+			CBilliardStrategy::CBilliardStrategy(void)
+				: CBilliard(__FUNCTION__)
 			{
-			public:
-				CBilliardClever(void);
-				virtual ~CBilliardClever(void);
+			}
 
-			protected:
-				void DetermineSolution(void) override;
+			//******************************************************************************
+			//******************************************************************************
+			CBilliardStrategy::~CBilliardStrategy(void)
+			{
+			}
 
-				int NextBallFetch(void);
-				int NextBallCalculate(void);
-			};
+			//******************************************************************************
+			//******************************************************************************
+			void CBilliardStrategy::DetermineSolution(void)
+			{
+			}
 		}
 	}
 }
