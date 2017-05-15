@@ -26,6 +26,7 @@
 #include "billiard.h"
 #include <algorithm>
 #include <iostream>
+#include <chrono>
 
 namespace org
 {
@@ -41,6 +42,7 @@ namespace org
 			//******************************************************************************
 			//******************************************************************************
 			CBilliard::CBilliard(void)
+				: m_PermutationCount(0)
 			{
 			}
 
@@ -48,6 +50,21 @@ namespace org
 			//******************************************************************************
 			CBilliard::~CBilliard(void)
 			{
+			}
+
+			//******************************************************************************
+			//******************************************************************************
+			void CBilliard::SearchSolution(void)
+			{
+				auto TimeStart = std::chrono::high_resolution_clock::now();
+
+				DetermineSolution();
+
+				auto TimeEnd = std::chrono::high_resolution_clock::now();
+				auto Duration = TimeEnd - TimeStart;
+				auto Milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(Duration);
+
+				std::cout << "Number of permutations: " << m_PermutationCount << " done in " << Milliseconds.count() << " milliseconds" << std::endl;
 			}
 
 			//******************************************************************************
@@ -74,11 +91,13 @@ namespace org
 				if (true == Verbose)
 				{
 					// Show all balls in the shape of a triangle
+					std::cout << std::endl << std::endl;
 					std::cout << Balls[10] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[11] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[12] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[13] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[14] << std::endl << std::endl << std::endl;
 					std::cout << CBilliard::Delimiter << Balls[6] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[7] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[8] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[9] << std::endl << std::endl;
 					std::cout << CBilliard::Delimiter << CBilliard::Delimiter << Balls[3] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[4] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[5] << std::endl << std::endl;
 					std::cout << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << Balls[1] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[2] << std::endl << std::endl;
 					std::cout << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << Balls[0] << std::endl << std::endl;
+					std::cout << std::endl << std::endl;
 				}
 				else
 				{
@@ -96,19 +115,19 @@ namespace org
 			bool CBilliard::CheckRulesFit(const ballset &Balls)
 			{
 				// The ruleset for all 10 groups
-				bool Level1 = CheckTriple(Balls[0], Balls[1], Balls[2]);
+				bool Level1 = GroupCheck(Balls[0], Balls[1], Balls[2]);
 				bool Level2 = Level1
-					&& CheckTriple(Balls[2], Balls[4], Balls[5])
-					&& CheckTriple(Balls[3], Balls[5], Balls[6]);
+					&& GroupCheck(Balls[2], Balls[4], Balls[5])
+					&& GroupCheck(Balls[3], Balls[5], Balls[6]);
 				bool Level3 = Level2
-					&& CheckTriple(Balls[4], Balls[7], Balls[8])
-					&& CheckTriple(Balls[5], Balls[8], Balls[9])
-					&& CheckTriple(Balls[6], Balls[9], Balls[10]);
+					&& GroupCheck(Balls[4], Balls[7], Balls[8])
+					&& GroupCheck(Balls[5], Balls[8], Balls[9])
+					&& GroupCheck(Balls[6], Balls[9], Balls[10]);
 				bool Level4 = Level3
-					&& CheckTriple(Balls[7], Balls[11], Balls[12])
-					&& CheckTriple(Balls[8], Balls[12], Balls[13])
-					&& CheckTriple(Balls[9], Balls[13], Balls[14])
-					&& CheckTriple(Balls[10], Balls[13], Balls[15]);
+					&& GroupCheck(Balls[7], Balls[11], Balls[12])
+					&& GroupCheck(Balls[8], Balls[12], Balls[13])
+					&& GroupCheck(Balls[9], Balls[13], Balls[14])
+					&& GroupCheck(Balls[10], Balls[13], Balls[15]);
 
 				// Returns true if its a solution, otherwise false
 				return (Level1 && Level2 && Level3 && Level4);
@@ -116,12 +135,12 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
-			bool CBilliard::CheckTriple(int BallResult, int BallLeft, int BallRight)
+			bool CBilliard::GroupCheck(int BallBottom, int BallLeft, int BallRight)
 			{
 				// The group check
 				// |BallLeft - BallRight|
-				//     BallResult
-				return (BallResult == std::abs(BallLeft - BallRight));
+				//       BallBottom
+				return (BallBottom == std::abs(BallLeft - BallRight));
 			}
 		}
 	}

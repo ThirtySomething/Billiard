@@ -25,7 +25,7 @@
  */
 #pragma once
 
-#include <vector>
+#include <deque>
 #include <string>
 
 namespace org
@@ -34,7 +34,7 @@ namespace org
 	{
 		namespace various
 		{
-			typedef std::vector<int> ballset;
+			typedef std::deque<int> ballset;
 
 			class CBilliard
 			{
@@ -42,16 +42,18 @@ namespace org
 				CBilliard(void);
 				virtual ~CBilliard(void);
 
-				virtual void SearchSolution(void) = 0;
-				void ShowBalls(const ballset &Balls, bool Verbose = false);
-				bool CheckRulesFit(const ballset &Balls);
+				void SearchSolution(void);
+				static void ShowBalls(const ballset &Balls, bool Verbose = false);
 
 			protected:
 				static const int BallMax;
 				static const std::string Delimiter;
 
-				ballset InitBalls(void);
-				bool CheckTriple(int BallResult, int BallLeft, int BallRight);
+				volatile unsigned long long m_PermutationCount;
+				virtual void DetermineSolution(void) = 0;
+				static ballset InitBalls(void);
+				bool GroupCheck(int BallBottom, int BallLeft, int BallRight);
+				bool CheckRulesFit(const ballset &Balls);
 			};
 		}
 	}
