@@ -82,12 +82,10 @@ namespace org
 				// Empty vector
 				ballset Balls;
 				// Add ball numbers
-				for (int i = BallMax; i > 0; i--)
+				for (int i = 1; i <= BallMax; i++)
 				{
 					Balls.push_back(i);
 				}
-				// Sort in ascending order for the C++ permutation algorithm
-				std::sort(Balls.begin(), Balls.end());
 
 				return Balls;
 			}
