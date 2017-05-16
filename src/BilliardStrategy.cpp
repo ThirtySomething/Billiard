@@ -76,6 +76,9 @@ namespace org
 						BallsAvailable.push_back(BallCurrent);
 						Solution.pop_back();
 						break;
+                    case UNDEFINED:
+                    default:
+                        break;
 					}
 				}
 			}
