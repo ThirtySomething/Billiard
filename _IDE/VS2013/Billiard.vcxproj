@@ -166,10 +166,7 @@
     <ClInclude Include="./../../src/BilliardStrategy.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="run32debug.bat" />
-    <None Include="run32release.bat" />
-    <None Include="run64debug.bat" />
-    <None Include="run64release.bat" />
+    <None Include="run.bat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
