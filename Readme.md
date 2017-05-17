@@ -35,9 +35,9 @@ This `group` of `two balls above one` is available at least 10 times for 15 ball
 
 ## Source ##
 
-The C++ program in the folder `src` will solve this puzzle. There are currently two solvers present. 
+The C++ program in the folder `src` will solve this puzzle. There are currently two solvers present.
 
-The first one, `BilliardBruteForce` will perform a brute force method to solve this puzzle. There is a huge amount of permutations for all 15 balls - you need patience and a fast computer.
+The first one, `BilliardBruteForce` will perform a brute force method to solve this puzzle. There is a huge amount of permutations for all 15 balls - you need patience and a fast computer. To see the program is working, a dot for 200000 permutations is printed. 50 dots in a row show 10 million permutations.
 
 The second one, `BilliardStrategy` will follow a strategy to solve this puzzle. There are much less permutations required.
 
@@ -50,16 +50,29 @@ Assume a function `CheckGroup` where you have as parameter the index of the lowe
 ```
 
 Level1 = CheckGroup(0, 1, 2)
-Level2 = Level1 & CheckGroup(2, 4, 5) &
-         CheckGroup(3, 5, 6)
-Level3 = Level2 & CheckGroup(4, 7, 8) &
-         CheckGroup(5, 8, 9) &
-         CheckGroup(6, 9, 10)
-Level4 = Level3 & CheckGroup(7, 11, 12) &
+Level2 = Level1 & CheckGroup(1, 3, 4) &
+         CheckGroup(2, 4, 5)
+Level3 = Level2 & CheckGroup(4, 6, 7) &
+         CheckGroup(4, 7, 8) &
+         CheckGroup(5, 8, 9)
+Level4 = Level3 & CheckGroup(6, 10, 11) &
+         CheckGroup(7, 11, 12) &
          CheckGroup(8, 12, 13) &
-         CheckGroup(9, 13, 14) &
-         CheckGroup(10, 13, 15)
+         CheckGroup(9, 13, 14)
 ```
+
+## Solution ##
+
+There are two solutions. They are symmetric at the y-axis. I'll show only one:
+
+| Level |       |       |       |       |       |       |       |       |       |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|     4 |     6 |       |    14 |       |    15 |       |     3 |       |    13 |
+|     3 |       |     8 |       |     1 |       |    12 |       |    10 |       |
+|     2 |       |       |     7 |       |    11 |       |     2 |       |       |
+|     1 |       |       |       |     4 |       |     9 |       |       |       |
+|     0 |       |       |       |       |     5 |       |       |       |       |
+
 
 ## License ##
 

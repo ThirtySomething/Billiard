@@ -36,8 +36,8 @@ namespace org
 		{
 			//******************************************************************************
 			//******************************************************************************
-			const unsigned long long CBilliardBruteForce::PermutationsPerDot = 1000000;
 			const int CBilliardBruteForce::DotsPerLine = 50;
+			const unsigned long long CBilliardBruteForce::PermutationsPerDot = 200000;
 
 			//******************************************************************************
 			//******************************************************************************
@@ -54,6 +54,29 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
+			bool CBilliardBruteForce::CheckPermutation(const ballset &Balls)
+			{
+				// The ruleset for all 10 groups
+				bool Level1 = CheckGroup(Balls[0], Balls[1], Balls[2]);
+				bool Level2 = Level1
+					&& CheckGroup(Balls[1], Balls[3], Balls[4])
+					&& CheckGroup(Balls[2], Balls[4], Balls[5]);
+				bool Level3 = Level2
+					&& CheckGroup(Balls[3], Balls[6], Balls[7])
+					&& CheckGroup(Balls[4], Balls[7], Balls[8])
+					&& CheckGroup(Balls[5], Balls[8], Balls[9]);
+				bool Level4 = Level3
+					&& CheckGroup(Balls[6], Balls[10], Balls[11])
+					&& CheckGroup(Balls[7], Balls[11], Balls[12])
+					&& CheckGroup(Balls[8], Balls[12], Balls[13])
+					&& CheckGroup(Balls[9], Balls[13], Balls[14]);
+
+				// Returns true if its a solution, otherwise false
+				return (Level1 && Level2 && Level3 && Level4);
+			}
+
+			//******************************************************************************
+			//******************************************************************************
 			void CBilliardBruteForce::DetermineSolution(void)
 			{
 				// Should be volatile in case of parallel tasks
@@ -61,7 +84,7 @@ namespace org
 				int linelength = 0;
 				do {
 					// Check the rules
-					if (true == CheckRulesFit(Balls))
+					if (true == CheckPermutation(Balls))
 					{
 						// Display solution
 						ShowBalls(Balls);

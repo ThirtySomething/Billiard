@@ -52,12 +52,12 @@ namespace org
 				ballset BallsAvailable = InitBalls();
 				ballset Solution;
 
-				CheckRecurse(Solution, BallsAvailable);
+				CheckBallset(Solution, BallsAvailable);
 			}
 
 			//******************************************************************************
 			//******************************************************************************
-			bool CBilliardStrategy::CheckResult(const ballset &Solution, int BallBottom, int BallLeft, int BallRight)
+			bool CBilliardStrategy::CheckPermutation(const ballset &Solution, int BallBottom, int BallLeft, int BallRight)
 			{
 				bool Abort = false;
 
@@ -71,7 +71,7 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
-			void CBilliardStrategy::CheckRecurse(ballset &Solution, ballset &BallsAvailable)
+			void CBilliardStrategy::CheckBallset(ballset &Solution, ballset &BallsAvailable)
 			{
 				for (ballset::iterator CurrentBall = BallsAvailable.begin(); CurrentBall != BallsAvailable.end(); ++CurrentBall)
 				{
@@ -86,31 +86,31 @@ namespace org
 					switch (static_cast<int>(Solution.size()))
 					{
 					case 3:
-						Abort = CheckResult(Solution, Solution[0], Solution[1], Solution[2]);
+						Abort = CheckPermutation(Solution, Solution[0], Solution[1], Solution[2]);
 						break;
 					case 5:
-						Abort = CheckResult(Solution, Solution[1], Solution[3], Solution[4]);
+						Abort = CheckPermutation(Solution, Solution[1], Solution[3], Solution[4]);
 						break;
 					case 6:
-						Abort = CheckResult(Solution, Solution[2], Solution[4], Solution[5]);
+						Abort = CheckPermutation(Solution, Solution[2], Solution[4], Solution[5]);
 						break;
 					case 8:
-						Abort = CheckResult(Solution, Solution[3], Solution[6], Solution[7]);
+						Abort = CheckPermutation(Solution, Solution[3], Solution[6], Solution[7]);
 						break;
 					case 9:
-						Abort = CheckResult(Solution, Solution[4], Solution[7], Solution[8]);
+						Abort = CheckPermutation(Solution, Solution[4], Solution[7], Solution[8]);
 						break;
 					case 10:
-						Abort = CheckResult(Solution, Solution[5], Solution[8], Solution[9]);
+						Abort = CheckPermutation(Solution, Solution[5], Solution[8], Solution[9]);
 						break;
 					case 12:
-						Abort = CheckResult(Solution, Solution[6], Solution[10], Solution[11]);
+						Abort = CheckPermutation(Solution, Solution[6], Solution[10], Solution[11]);
 						break;
 					case 13:
-						Abort = CheckResult(Solution, Solution[7], Solution[11], Solution[12]);
+						Abort = CheckPermutation(Solution, Solution[7], Solution[11], Solution[12]);
 						break;
 					case 14:
-						Abort = CheckResult(Solution, Solution[8], Solution[12], Solution[13]);
+						Abort = CheckPermutation(Solution, Solution[8], Solution[12], Solution[13]);
 						break;
 					case 15:
 						if (true == CheckGroup(Solution[9], Solution[13], Solution[14]))
@@ -127,7 +127,7 @@ namespace org
 						continue;
 					}
 
-					CheckRecurse(Solution, BallsAvailableNext);
+					CheckBallset(Solution, BallsAvailableNext);
 					Solution.pop_back();
 				}
 			}

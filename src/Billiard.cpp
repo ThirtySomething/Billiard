@@ -42,8 +42,8 @@ namespace org
 			//******************************************************************************
 			//******************************************************************************
 			CBilliard::CBilliard(std::string CalculationMethod)
-				: m_PermutationCount(0)
-				, m_CalculationMethod(CalculationMethod)
+				: m_CalculationMethod(CalculationMethod)
+				, m_PermutationCount(0)
 			{
 			}
 
@@ -55,24 +55,12 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
-			unsigned long long CBilliard::GetLimit(unsigned long long Base)
+			bool CBilliard::CheckGroup(int BallBottom, int BallLeft, int BallRight)
 			{
-				return ((0 == Base) || (1 == Base)) ? 1 : GetLimit(Base - 1) * Base;
-			}
-
-			//******************************************************************************
-			//******************************************************************************
-			void CBilliard::SearchSolution(void)
-			{
-				auto TimeStart = std::chrono::high_resolution_clock::now();
-
-				DetermineSolution();
-
-				auto TimeEnd = std::chrono::high_resolution_clock::now();
-				auto Duration = TimeEnd - TimeStart;
-				auto Milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(Duration);
-
-				std::cout << "[" << m_CalculationMethod << "] finished, [" << m_PermutationCount << "] permutations, [" << Milliseconds.count() << "] milliseconds duration" << std::endl;
+				// The group check
+				// |BallLeft - BallRight|
+				//       BallBottom
+				return (BallBottom == std::abs(BallLeft - BallRight));
 			}
 
 			//******************************************************************************
@@ -92,6 +80,21 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
+			void CBilliard::SearchSolution(void)
+			{
+				auto TimeStart = std::chrono::high_resolution_clock::now();
+
+				DetermineSolution();
+
+				auto TimeEnd = std::chrono::high_resolution_clock::now();
+				auto Duration = TimeEnd - TimeStart;
+				auto Milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(Duration);
+
+				std::cout << "[" << m_CalculationMethod << "] finished, [" << m_PermutationCount << "] permutations, [" << Milliseconds.count() << "] milliseconds duration" << std::endl;
+			}
+
+			//******************************************************************************
+			//******************************************************************************
 			void CBilliard::ShowBalls(const ballset &Balls)
 			{
 				// Show all balls in the shape of a triangle
@@ -102,39 +105,6 @@ namespace org
 				std::cout << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << Balls[1] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[2] << std::endl << std::endl;
 				std::cout << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << Balls[0] << std::endl << std::endl;
 				std::cout << std::endl << std::endl;
-			}
-
-			//******************************************************************************
-			//******************************************************************************
-			bool CBilliard::CheckRulesFit(const ballset &Balls)
-			{
-				// The ruleset for all 10 groups
-				bool Level1 = CheckGroup(Balls[0], Balls[1], Balls[2]);
-				bool Level2 = Level1
-					&& CheckGroup(Balls[2], Balls[4], Balls[5])
-					&& CheckGroup(Balls[3], Balls[5], Balls[6]);
-				bool Level3 = Level2
-					&& CheckGroup(Balls[4], Balls[7], Balls[8])
-					&& CheckGroup(Balls[5], Balls[8], Balls[9])
-					&& CheckGroup(Balls[6], Balls[9], Balls[10]);
-				bool Level4 = Level3
-					&& CheckGroup(Balls[7], Balls[11], Balls[12])
-					&& CheckGroup(Balls[8], Balls[12], Balls[13])
-					&& CheckGroup(Balls[9], Balls[13], Balls[14])
-					&& CheckGroup(Balls[10], Balls[13], Balls[15]);
-
-				// Returns true if its a solution, otherwise false
-				return (Level1 && Level2 && Level3 && Level4);
-			}
-
-			//******************************************************************************
-			//******************************************************************************
-			bool CBilliard::CheckGroup(int BallBottom, int BallLeft, int BallRight)
-			{
-				// The group check
-				// |BallLeft - BallRight|
-				//       BallBottom
-				return (BallBottom == std::abs(BallLeft - BallRight));
 			}
 		}
 	}

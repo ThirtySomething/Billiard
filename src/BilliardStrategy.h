@@ -40,8 +40,8 @@ namespace org
 				virtual ~CBilliardStrategy(void);
 
 			protected:
-				void CheckRecurse(ballset &Solution, ballset &BallsAvailable);
-				bool CheckResult(const ballset &Solution, int BallBottom, int BallLeft, int BallRight);
+				void CheckBallset(ballset &Solution, ballset &BallsAvailable);
+				bool CheckPermutation(const ballset &Solution, int BallBottom, int BallLeft, int BallRight);
 				void DetermineSolution(void) override;
 			};
 		}

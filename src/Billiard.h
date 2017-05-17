@@ -49,13 +49,12 @@ namespace org
 				static const int BallMax;
 				static const std::string Delimiter;
 
-				volatile unsigned long long m_PermutationCount;
 				std::string m_CalculationMethod;
+				volatile unsigned long long m_PermutationCount;
+
+				bool CheckGroup(int BallBottom, int BallLeft, int BallRight);
 				virtual void DetermineSolution(void) = 0;
 				static ballset InitBalls(void);
-				static unsigned long long GetLimit(unsigned long long Base);
-				bool CheckGroup(int BallBottom, int BallLeft, int BallRight);
-				bool CheckRulesFit(const ballset &Balls);
 			};
 		}
 	}
