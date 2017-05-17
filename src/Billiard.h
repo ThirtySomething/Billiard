@@ -43,7 +43,7 @@ namespace org
 				virtual ~CBilliard(void);
 
 				void SearchSolution(void);
-				static void ShowBalls(const ballset &Balls, bool Verbose = false);
+				static void ShowBalls(const ballset &Balls);
 
 			protected:
 				static const int BallMax;

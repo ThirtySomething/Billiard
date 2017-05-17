@@ -49,108 +49,87 @@ namespace org
 			//******************************************************************************
 			void CBilliardStrategy::DetermineSolution(void)
 			{
-				bool SearchSolution = true;
-				ballset Solution;
 				ballset BallsAvailable = InitBalls();
-				int BallCurrent;
+				ballset Solution;
 
-				while (true == SearchSolution)
+				CheckRecurse(Solution, BallsAvailable);
+			}
+
+			//******************************************************************************
+			//******************************************************************************
+			bool CBilliardStrategy::CheckResult(const ballset &Solution, int BallBottom, int BallLeft, int BallRight)
+			{
+				bool Abort = false;
+
+				if (false == CheckGroup(BallBottom, BallLeft, BallRight))
 				{
-					CBilliardStrategy::NextAction Action = PerformCheck(Solution);
+					Abort = true;
+				}
 
-					ShowBalls(Solution);
+				return Abort;
+			}
 
-					switch (Action)
+			//******************************************************************************
+			//******************************************************************************
+			void CBilliardStrategy::CheckRecurse(ballset &Solution, ballset &BallsAvailable)
+			{
+				for (ballset::iterator CurrentBall = BallsAvailable.begin(); CurrentBall != BallsAvailable.end(); ++CurrentBall)
+				{
+					int BallNumber = *CurrentBall;
+					ballset BallsAvailableNext = BallsAvailable;
+					BallsAvailableNext.erase(std::remove(BallsAvailableNext.begin(), BallsAvailableNext.end(), BallNumber), BallsAvailableNext.end());
+					m_PermutationCount++;
+					bool Abort = false;
+
+					Solution.push_back(BallNumber);
+
+					switch (static_cast<int>(Solution.size()))
 					{
-					case BALL_FETCH:
-						BallCurrent = BallsAvailable.front();
-						Solution.push_back(BallCurrent);
-						BallsAvailable.pop_front();
+					case 3:
+						Abort = CheckResult(Solution, Solution[0], Solution[1], Solution[2]);
 						break;
-					case SOLUTION:
-						ShowBalls(Solution, true);
-						SearchSolution = false;
+					case 5:
+						Abort = CheckResult(Solution, Solution[1], Solution[3], Solution[4]);
 						break;
-					case STEP_BACK:
-						BallCurrent = Solution.back();
-						BallsAvailable.push_back(BallCurrent);
+					case 6:
+						Abort = CheckResult(Solution, Solution[2], Solution[4], Solution[5]);
+						break;
+					case 8:
+						Abort = CheckResult(Solution, Solution[3], Solution[6], Solution[7]);
+						break;
+					case 9:
+						Abort = CheckResult(Solution, Solution[4], Solution[7], Solution[8]);
+						break;
+					case 10:
+						Abort = CheckResult(Solution, Solution[5], Solution[8], Solution[9]);
+						break;
+					case 12:
+						Abort = CheckResult(Solution, Solution[6], Solution[10], Solution[11]);
+						break;
+					case 13:
+						Abort = CheckResult(Solution, Solution[7], Solution[11], Solution[12]);
+						break;
+					case 14:
+						Abort = CheckResult(Solution, Solution[8], Solution[12], Solution[13]);
+						break;
+					case 15:
+						if (true == CheckGroup(Solution[9], Solution[13], Solution[14]))
+						{
+							ShowBalls(Solution);
+							Abort = true;
+						}
+						break;
+					}
+
+					if (true == Abort)
+					{
 						Solution.pop_back();
-						break;
-                    case UNDEFINED:
-                    default:
-                        break;
+						continue;
 					}
+
+					CheckRecurse(Solution, BallsAvailableNext);
+					Solution.pop_back();
 				}
-			}
-
-			//******************************************************************************
-			//******************************************************************************
-			CBilliardStrategy::NextAction CBilliardStrategy::PerformCheck(const ballset &Solution)
-			{
-				CBilliardStrategy::NextAction Action = UNDEFINED;
-				int Size = static_cast<int>(Solution.size());
-
-				switch (Size)
-				{
-				case 0:
-				case 1:
-				case 2:
-				case 4:
-				case 7:
-				case 11:
-					Action = BALL_FETCH;
-					break;
-				case 3:
-					Action = DetermineAction(Solution[0], Solution[1], Solution[2]);
-					break;
-				case 5:
-					Action = DetermineAction(Solution[1], Solution[3], Solution[4]);
-					break;
-				case 6:
-					Action = DetermineAction(Solution[2], Solution[4], Solution[5]);
-					break;
-				case 8:
-					Action = DetermineAction(Solution[3], Solution[6], Solution[7]);
-					break;
-				case 9:
-					Action = DetermineAction(Solution[4], Solution[7], Solution[8]);
-					break;
-				case 10:
-					Action = DetermineAction(Solution[5], Solution[8], Solution[9]);
-					break;
-				case 12:
-					Action = DetermineAction(Solution[6], Solution[10], Solution[11]);
-					break;
-				case 13:
-					Action = DetermineAction(Solution[7], Solution[11], Solution[12]);
-					break;
-				case 14:
-					Action = DetermineAction(Solution[8], Solution[12], Solution[13]);
-					break;
-				case 15:
-					Action = DetermineAction(Solution[9], Solution[13], Solution[14]);
-					if (BALL_FETCH == Action)
-					{
-						Action = SOLUTION;
-					}
-					break;
-				}
-
-				return Action;
-			}
-
-			//******************************************************************************
-			//******************************************************************************
-			CBilliardStrategy::NextAction CBilliardStrategy::DetermineAction(int BallBottom, int BallLeft, int BallRight)
-			{
-				CBilliardStrategy::NextAction Action = STEP_BACK;
-
-				if (true == CheckGroup(BallBottom, BallLeft, BallRight))
-				{
-					Action = BALL_FETCH;
-				}
-
-				return Action;
 			}
 		}
 	}

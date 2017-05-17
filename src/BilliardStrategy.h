@@ -40,15 +40,9 @@ namespace org
 				virtual ~CBilliardStrategy(void);
 
 			protected:
-				enum NextAction {
-					BALL_FETCH,
-					SOLUTION,
-					STEP_BACK,
-					UNDEFINED
-				};
+				void CheckRecurse(ballset &Solution, ballset &BallsAvailable);
+				bool CheckResult(const ballset &Solution, int BallBottom, int BallLeft, int BallRight);
 				void DetermineSolution(void) override;
-				NextAction PerformCheck(const ballset &Solution);
-				NextAction DetermineAction(int BallBottom, int BallLeft, int BallRight);
 			};
 		}
 	}

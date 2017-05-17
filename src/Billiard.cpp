@@ -92,28 +92,16 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
-			void CBilliard::ShowBalls(const ballset &Balls, bool Verbose)
+			void CBilliard::ShowBalls(const ballset &Balls)
 			{
-				if (true == Verbose)
-				{
-					// Show all balls in the shape of a triangle
-					std::cout << std::endl << std::endl;
-					std::cout << Balls[10] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[11] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[12] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[13] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[14] << std::endl << std::endl << std::endl;
-					std::cout << CBilliard::Delimiter << Balls[6] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[7] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[8] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[9] << std::endl << std::endl;
-					std::cout << CBilliard::Delimiter << CBilliard::Delimiter << Balls[3] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[4] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[5] << std::endl << std::endl;
-					std::cout << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << Balls[1] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[2] << std::endl << std::endl;
-					std::cout << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << Balls[0] << std::endl << std::endl;
-					std::cout << std::endl << std::endl;
-				}
-				else
-				{
-					// Show all balls in a sequence
-					for (ballset::const_iterator CurrentBall = Balls.begin(); CurrentBall != Balls.end(); ++CurrentBall)
-					{
-						std::cout << '|' << *CurrentBall;
-					}
-					std::cout << '|' << std::endl;
-				}
+				// Show all balls in the shape of a triangle
+				std::cout << std::endl << std::endl;
+				std::cout << Balls[10] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[11] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[12] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[13] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[14] << std::endl << std::endl;
+				std::cout << CBilliard::Delimiter << Balls[6] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[7] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[8] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[9] << std::endl << std::endl;
+				std::cout << CBilliard::Delimiter << CBilliard::Delimiter << Balls[3] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[4] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[5] << std::endl << std::endl;
+				std::cout << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << Balls[1] << CBilliard::Delimiter << CBilliard::Delimiter << Balls[2] << std::endl << std::endl;
+				std::cout << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << CBilliard::Delimiter << Balls[0] << std::endl << std::endl;
+				std::cout << std::endl << std::endl;
 			}
 
 			//******************************************************************************

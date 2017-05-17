@@ -64,7 +64,7 @@ namespace org
 					if (true == CheckRulesFit(Balls))
 					{
 						// Display solution
-						ShowBalls(Balls, true);
+						ShowBalls(Balls);
 					}
 
 					// If not miscalculated, there will be 1 307 674 368 000 permutations
