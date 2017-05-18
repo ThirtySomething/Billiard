@@ -1,5 +1,6 @@
 /Bin
 /Build
+/_IDE/Build
 /_IDE/VS2013/.vs
 /_IDE/VS2013/Billiard.opensdf
 /_IDE/VS2013/Billiard.sdf
@@ -11,3 +12,9 @@
 /_IDE/VS2013/Result64Release.log
 /_IDE/VS2013/Win32
 /_IDE/VS2013/x64
+/_IDE/VS2015/.vs
+/_IDE/VS2015/Billiard.VC.VC.opendb
+/_IDE/VS2015/Billiard.VC.db
+/_IDE/VS2015/Billiard.vcxproj.user
+/_IDE/VS2017/.vs
+/_IDE/VS2017/Billiard.vcxproj.user
