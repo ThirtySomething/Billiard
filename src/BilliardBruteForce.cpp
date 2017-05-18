@@ -28,10 +28,19 @@
 #include <iostream>
 #include <cmath>
 
+/**
+ * Namespace of Billiard
+ */
 namespace org
 {
+	/**
+	 * Namespace of Billiard
+	 */
 	namespace derpaul
 	{
+		/**
+		 * Namespace of Billiard
+		 */
 		namespace various
 		{
 			//******************************************************************************
@@ -81,7 +90,6 @@ namespace org
 			{
 				// Should be volatile in case of parallel tasks
 				ballset Balls = InitBalls();
-				int linelength = 0;
 				do {
 					// Check the rules
 					if (true == CheckPermutation(Balls))
@@ -89,23 +97,29 @@ namespace org
 						// Display solution
 						ShowBalls(Balls);
 					}
-
-					// If not miscalculated, there will be 1 307 674 368 000 permutations
 					m_PermutationCount++;
-
-					// Show a dot for each 1000000 permutations with at least
-					// maximum 50 dots each line
-					if (0 == (m_PermutationCount % CBilliardBruteForce::PermutationsPerDot))
-					{
-						if (CBilliardBruteForce::DotsPerLine <= linelength)
-						{
-							std::cout << std::endl;
-							linelength = 0;
-						}
-						std::cout << ".";
-						linelength++;
-					}
+					ShowProgressInformation();
 				} while (std::next_permutation(Balls.begin(), Balls.end()));
+			}
+
+			//******************************************************************************
+			//******************************************************************************
+			void CBilliardBruteForce::ShowProgressInformation(void)
+			{
+				static int linelength = 0;
+
+				// Show a dot for each 1000000 permutations with at least
+				// maximum 50 dots each line
+				if (0 == (m_PermutationCount % CBilliardBruteForce::PermutationsPerDot))
+				{
+					if (CBilliardBruteForce::DotsPerLine <= linelength)
+					{
+						std::cout << std::endl;
+						linelength = 0;
+					}
+					std::cout << ".";
+					linelength++;
+				}
 			}
 		}
 	}

@@ -23,17 +23,22 @@
  * \date	2017-05-12
  * \brief	Start of Billiard puzzle
  */
-#include "Billiard.h"
 #include "BilliardBruteForce.h"
 #include "BilliardStrategy.h"
 
+/**
+ * Start of puzzle solver(s)
+ * \param argc Number of command line arguments
+ * \param argv Array of passed command line arguments as strings
+ * \return Signal normal termination to OS
+ */
 int main(int argc, char* argv[])
 {
-	org::derpaul::various::CBilliardStrategy TableStragegy;
 	org::derpaul::various::CBilliardBruteForce TableBruteForce;
+	org::derpaul::various::CBilliardStrategy TableStragegy;
 
-	TableStragegy.SearchSolution();
 	TableBruteForce.SearchSolution();
+	TableStragegy.SearchSolution();
 
 	return 0;
 }

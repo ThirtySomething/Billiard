@@ -27,22 +27,66 @@
 
 #include "Billiard.h"
 
+/**
+ * Namespace of Billiard
+ */
 namespace org
 {
+	/**
+	 * Namespace of Billiard
+	 */
 	namespace derpaul
 	{
+		/**
+		 * Namespace of Billiard
+		 */
 		namespace various
 		{
+			/**
+			 * Strategy solver for billard puzzle
+			 */
 			class CBilliardStrategy : public CBilliard
 			{
 			public:
+				/**
+				 * Default constructor
+				 */
 				CBilliardStrategy(void);
+
+				/**
+				 * Default destructor
+				 */
 				virtual ~CBilliardStrategy(void);
 
 			protected:
-				void CheckBallset(ballset &Solution, ballset &BallsAvailable);
-				bool CheckPermutation(const ballset &Solution, int BallBottom, int BallLeft, int BallRight);
+				/**
+				 * Evaluation of the given permutation
+				 * \param Solution Permutation to check
+				 * \param BallsAvailable Ballset of unused balls for recursive calls
+				 */
+				void CheckPermutation(ballset &Solution, ballset &BallsAvailable);
+
+				/**
+				 * Check of a group, determination of an abort flag
+				 * \param Solution Ballset of current solution
+				 * \param BallBottom The lower ball
+				 * \param BallLeft The ball above the lower ball on the left side
+				 * \param BallRight The ball above the lower ball on the right side
+				 * \return true for abort, false for further recursion
+				 */
+				bool CheckPermutationSingle(const ballset &Solution, int BallBottom, int BallLeft, int BallRight);
+
+				/**
+				 * Entry point for the strategy puzzle solver, the algorithm starts here
+				 */
 				void DetermineSolution(void) override;
+
+				/**
+				 * Evaluate the given ballset and returns bool to decide to continue recursion or to abort
+				 * \param Solution Ballset of current solution
+				 * \return true for abort, false for further recursion
+				 */
+				bool GetAbortFlag(const ballset &Solution);
 			};
 		}
 	}

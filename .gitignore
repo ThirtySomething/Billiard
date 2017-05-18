@@ -18,3 +18,5 @@
 /_IDE/VS2015/Billiard.vcxproj.user
 /_IDE/VS2017/.vs
 /_IDE/VS2017/Billiard.vcxproj.user
+/doxygen/Billiard.log
+/doxygen/html

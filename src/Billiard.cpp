@@ -28,10 +28,19 @@
 #include <iostream>
 #include <chrono>
 
+/**
+ * Namespace of Billiard
+ */
 namespace org
 {
+	/**
+	 * Namespace of Billiard
+	 */
 	namespace derpaul
 	{
+		/**
+		 * Namespace of Billiard
+		 */
 		namespace various
 		{
 			//******************************************************************************
@@ -41,8 +50,8 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
-			CBilliard::CBilliard(std::string CalculationMethod)
-				: m_CalculationMethod(CalculationMethod)
+			CBilliard::CBilliard(const std::string &CalculationMethod)
+				: m_SolverName(CalculationMethod)
 				, m_PermutationCount(0)
 			{
 			}
@@ -90,7 +99,7 @@ namespace org
 				auto Duration = TimeEnd - TimeStart;
 				auto Milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(Duration);
 
-				std::cout << "[" << m_CalculationMethod << "] finished, [" << m_PermutationCount << "] permutations, [" << Milliseconds.count() << "] milliseconds duration" << std::endl;
+				std::cout << "[" << m_SolverName << "] finished, [" << m_PermutationCount << "] permutations, [" << Milliseconds.count() << "] milliseconds duration" << std::endl;
 			}
 
 			//******************************************************************************

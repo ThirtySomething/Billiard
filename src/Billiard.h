@@ -28,32 +28,93 @@
 #include <deque>
 #include <string>
 
+/**
+ * Namespace of Billiard
+ */
 namespace org
 {
+	/**
+	 * Namespace of Billiard
+	 */
 	namespace derpaul
 	{
+		/**
+		 * Namespace of Billiard
+		 */
 		namespace various
 		{
+			/**
+			 * Convenience typedef for internal usage
+			 */
 			typedef std::deque<int> ballset;
 
+			/**
+			 * Common base class for all solver classes
+			 */
 			class CBilliard
 			{
 			public:
-				CBilliard(std::string CalculationMethod);
+				/**
+				 * Default constructor
+				 * \param SolverName Name of class for output
+				 */
+				explicit CBilliard(const std::string &SolverName);
+
+				/**
+				 * Default destructor
+				 */
 				virtual ~CBilliard(void);
 
+				/**
+				 * Common entry point for all puzzle solvers
+				 */
 				void SearchSolution(void);
+
+				/**
+				 * To print a solution
+				 * \param Balls The ballset containing the solution
+				 */
 				static void ShowBalls(const ballset &Balls);
 
 			protected:
+				/**
+				 * The maximum number of balls
+				 */
 				static const int BallMax;
+
+				/**
+				 * Delimiter between two balls in output
+				 */
 				static const std::string Delimiter;
 
-				std::string m_CalculationMethod;
+				/**
+				 * The name of the puzzle solver
+				 */
+				std::string m_SolverName;
+
+				/**
+				 * Permutation counter
+				 */
 				volatile unsigned long long m_PermutationCount;
 
+				/**
+				 * Check of a group
+				 * \param BallBottom The lower ball
+				 * \param BallLeft The ball above the lower ball on the left side
+				 * \param BallRight The ball above the lower ball on the right side
+				 * \return true on successful ball match, otherwise false
+				 */
 				bool CheckGroup(int BallBottom, int BallLeft, int BallRight);
+
+				/**
+				 * Pure virtual method, requires implementation for each solver
+				 */
 				virtual void DetermineSolution(void) = 0;
+
+				/**
+				 * Convenience method, fills a ballset with all balls
+				 * \return Complete ballset
+				 */
 				static ballset InitBalls(void);
 			};
 		}
