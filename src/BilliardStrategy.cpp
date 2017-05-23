@@ -26,9 +26,9 @@
 #include "BilliardStrategy.h"
 #include <algorithm>
 
-/**
- * Namespace of Billiard
- */
+ /**
+  * Namespace of Billiard
+  */
 namespace org
 {
 	/**
@@ -64,7 +64,6 @@ namespace org
 					ballset BallsAvailableNext = BallsAvailable;
 					BallsAvailableNext.erase(std::remove(BallsAvailableNext.begin(), BallsAvailableNext.end(), BallNumber), BallsAvailableNext.end());
 					m_PermutationCount++;
-					bool Abort = false;
 
 					Solution.push_back(BallNumber);
 
@@ -81,20 +80,6 @@ namespace org
 
 			//******************************************************************************
 			//******************************************************************************
-			bool CBilliardStrategy::CheckPermutationSingle(const ballset &Solution, int BallBottom, int BallLeft, int BallRight)
-			{
-				bool Abort = false;
-
-				if (false == CheckGroup(BallBottom, BallLeft, BallRight))
-				{
-					Abort = true;
-				}
-
-				return Abort;
-			}
-
-			//******************************************************************************
-			//******************************************************************************
 			void CBilliardStrategy::DetermineSolution(void)
 			{
 				ballset BallsAvailable = InitBalls();
@@ -107,36 +92,36 @@ namespace org
 			//******************************************************************************
 			bool CBilliardStrategy::GetAbortFlag(const ballset &Solution)
 			{
-				bool Abort;
+				bool Abort = false;
 
 				switch (static_cast<int>(Solution.size()))
 				{
 				case 3:
-					Abort = CheckPermutationSingle(Solution, Solution[0], Solution[1], Solution[2]);
+					Abort = (false == CheckGroup(Solution[0], Solution[1], Solution[2]));
 					break;
 				case 5:
-					Abort = CheckPermutationSingle(Solution, Solution[1], Solution[3], Solution[4]);
+					Abort = (false == CheckGroup(Solution[1], Solution[3], Solution[4]));
 					break;
 				case 6:
-					Abort = CheckPermutationSingle(Solution, Solution[2], Solution[4], Solution[5]);
+					Abort = (false == CheckGroup(Solution[2], Solution[4], Solution[5]));
 					break;
 				case 8:
-					Abort = CheckPermutationSingle(Solution, Solution[3], Solution[6], Solution[7]);
+					Abort = (false == CheckGroup(Solution[3], Solution[6], Solution[7]));
 					break;
 				case 9:
-					Abort = CheckPermutationSingle(Solution, Solution[4], Solution[7], Solution[8]);
+					Abort = (false == CheckGroup(Solution[4], Solution[7], Solution[8]));
 					break;
 				case 10:
-					Abort = CheckPermutationSingle(Solution, Solution[5], Solution[8], Solution[9]);
+					Abort = (false == CheckGroup(Solution[5], Solution[8], Solution[9]));
 					break;
 				case 12:
-					Abort = CheckPermutationSingle(Solution, Solution[6], Solution[10], Solution[11]);
+					Abort = (false == CheckGroup(Solution[6], Solution[10], Solution[11]));
 					break;
 				case 13:
-					Abort = CheckPermutationSingle(Solution, Solution[7], Solution[11], Solution[12]);
+					Abort = (false == CheckGroup(Solution[7], Solution[11], Solution[12]));
 					break;
 				case 14:
-					Abort = CheckPermutationSingle(Solution, Solution[8], Solution[12], Solution[13]);
+					Abort = (false == CheckGroup(Solution[8], Solution[12], Solution[13]));
 					break;
 				case 15:
 					if (true == CheckGroup(Solution[9], Solution[13], Solution[14]))
@@ -144,9 +129,6 @@ namespace org
 						ShowBalls(Solution);
 						Abort = true;
 					}
-					break;
-				default:
-					Abort = false;
 					break;
 				}
 

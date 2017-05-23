@@ -27,9 +27,9 @@
 
 #include "Billiard.h"
 
-/**
- * Namespace of Billiard
- */
+ /**
+  * Namespace of Billiard
+  */
 namespace org
 {
 	/**
@@ -65,16 +65,6 @@ namespace org
 				 * \param BallsAvailable Ballset of unused balls for recursive calls
 				 */
 				void CheckPermutation(ballset &Solution, ballset &BallsAvailable);
-
-				/**
-				 * Check of a group, determination of an abort flag
-				 * \param Solution Ballset of current solution
-				 * \param BallBottom The lower ball
-				 * \param BallLeft The ball above the lower ball on the left side
-				 * \param BallRight The ball above the lower ball on the right side
-				 * \return true for abort, false for further recursion
-				 */
-				bool CheckPermutationSingle(const ballset &Solution, int BallBottom, int BallLeft, int BallRight);
 
 				/**
 				 * Entry point for the strategy puzzle solver, the algorithm starts here
