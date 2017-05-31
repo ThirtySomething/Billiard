@@ -28,10 +28,10 @@
 #include <iostream>
 #include <cmath>
 
-/**
- * Namespace of Billiard
- */
-namespace org
+ /**
+  * Namespace of Billiard
+  */
+namespace net
 {
 	/**
 	 * Namespace of Billiard

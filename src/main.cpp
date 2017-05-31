@@ -26,16 +26,16 @@
 #include "BilliardBruteForce.h"
 #include "BilliardStrategy.h"
 
-/**
- * Start of puzzle solver(s)
- * \param argc Number of command line arguments
- * \param argv Array of passed command line arguments as strings
- * \return Signal normal termination to OS
- */
+ /**
+  * Start of puzzle solver(s)
+  * \param argc Number of command line arguments
+  * \param argv Array of passed command line arguments as strings
+  * \return Signal normal termination to OS
+  */
 int main(int argc, char* argv[])
 {
-	org::derpaul::various::CBilliardBruteForce TableBruteForce;
-	org::derpaul::various::CBilliardStrategy TableStragegy;
+	net::derpaul::various::CBilliardBruteForce TableBruteForce;
+	net::derpaul::various::CBilliardStrategy TableStragegy;
 
 	TableBruteForce.SearchSolution();
 	TableStragegy.SearchSolution();

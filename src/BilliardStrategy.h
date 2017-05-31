@@ -30,7 +30,7 @@
  /**
   * Namespace of Billiard
   */
-namespace org
+namespace net
 {
 	/**
 	 * Namespace of Billiard
