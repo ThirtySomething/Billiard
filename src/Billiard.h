@@ -25,7 +25,7 @@
  */
 #pragma once
 
-#include <deque>
+#include <vector>
 #include <string>
 
  /**
@@ -46,7 +46,7 @@ namespace net
 			/**
 			 * Convenience typedef for internal usage
 			 */
-			typedef std::deque<int> ballset;
+			typedef std::vector<int> ballset;
 
 			/**
 			 * Common base class for all solver classes

@@ -23,16 +23,23 @@
     <ClCompile Include="$(ProjectDir)..\..\src\BilliardBruteForce.cpp" />
     <ClCompile Include="$(ProjectDir)..\..\src\BilliardStrategy.cpp" />
     <ClCompile Include="$(ProjectDir)..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\BilliardConcurrentBruteForce.cpp" />
+    <ClCompile Include="..\..\src\MathUtility.cpp" />
+    <ClCompile Include="..\..\src\PermutationGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(ProjectDir)..\..\src\Billiard.h" />
     <ClInclude Include="$(ProjectDir)..\..\src\BilliardBruteForce.h" />
     <ClInclude Include="$(ProjectDir)..\..\src\BilliardStrategy.h" />
+    <ClInclude Include="..\..\src\BilliardConcurrentBruteForce.h" />
+    <ClInclude Include="..\..\src\MathUtility.h" />
+    <ClInclude Include="..\..\src\PermutationGenerator.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{36C15DDF-73A6-4126-80C4-951BDBE4D56E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Billiard</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
