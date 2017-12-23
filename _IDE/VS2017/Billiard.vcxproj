@@ -39,7 +39,7 @@
     <ProjectGuid>{36C15DDF-73A6-4126-80C4-951BDBE4D56E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Billiard</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

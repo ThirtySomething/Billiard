@@ -37,15 +37,13 @@
   */
 int main(int argc, char* argv[])
 {
+	net::derpaul::various::CBilliardStrategy TableStragegy;
 	net::derpaul::various::CBilliardConcurrentBruteForce TableConcurrentBruteForce;
 	net::derpaul::various::CBilliardBruteForce TableBruteForce;
-	net::derpaul::various::CBilliardStrategy TableStragegy;
 
+	TableStragegy.SearchSolution();
 	TableConcurrentBruteForce.SearchSolution();
 	TableBruteForce.SearchSolution();
-	TableStragegy.SearchSolution();
-
-	getchar();
 
 	return 0;
 }
