@@ -72,6 +72,10 @@ namespace net
 						Solution.pop_back();
 						continue;
 					}
+					if (Solution.size() == BallMax)
+					{
+						ShowBalls(Solution);
+					}
 
 					CheckPermutation(Solution, BallsAvailableNext);
 					Solution.pop_back();

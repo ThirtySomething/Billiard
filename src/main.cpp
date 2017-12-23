@@ -23,6 +23,9 @@
  * \date	2017-05-12
  * \brief	Start of Billiard puzzle
  */
+#include <iostream>
+
+#include "BilliardConcurrentBruteForce.h"
 #include "BilliardBruteForce.h"
 #include "BilliardStrategy.h"
 
@@ -34,11 +37,15 @@
   */
 int main(int argc, char* argv[])
 {
+	net::derpaul::various::CBilliardConcurrentBruteForce TableConcurrentBruteForce;
 	net::derpaul::various::CBilliardBruteForce TableBruteForce;
 	net::derpaul::various::CBilliardStrategy TableStragegy;
 
+	TableConcurrentBruteForce.SearchSolution();
 	TableBruteForce.SearchSolution();
 	TableStragegy.SearchSolution();
+
+	getchar();
 
 	return 0;
 }
