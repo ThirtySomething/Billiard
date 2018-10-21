@@ -1,5 +1,7 @@
 # Billiard #
 
+ [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![Language](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/)
+
 ## What's that ##
 
 This is a mathematics puzzle based on billiard balls. Imagine the triangle of all billiard balls like this here
