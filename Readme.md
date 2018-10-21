@@ -1,8 +1,12 @@
-# Billiard #
+# Billiard
 
- [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![Language](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/)
+ [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![Language](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/) [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0 "LGPL-3.0")
 
-## What's that ##
+## License
+
+**Billiard** is distributed under the terms of the **GNU LESSER GENERAL PUBLIC LICENSE**, version 3.0. The text of the license is included in the file **LICENSE.TXT** in the project root.
+
+## What is `Billiard`
 
 This is a mathematics puzzle based on billiard balls. Imagine the triangle of all billiard balls like this here
 
@@ -21,7 +25,7 @@ On level 0, there is one ball with index 1 called `bottom ball`. On level 1, the
 |     1 |     5 |       |     8 |
 |     0 |       |     3 |       |
 
-```
+```C++
 bottom ball = abs(ball upper left - ball upper right)
 
       3     =           |  5       -         8 |
@@ -35,7 +39,7 @@ This `group` of `two balls above one` is available at least 10 times for 15 ball
 |     1 |       |     8 |       |     5 |       |
 |     0 |       |       |     3 |       |       |
 
-## Source ##
+## Source
 
 The C++ program in the folder `src` will solve this puzzle. There are currently two solvers present.
 
@@ -45,12 +49,11 @@ The second one, `BilliardStrategy` will follow a strategy to solve this puzzle. 
 
 Additional solvers are planned for the various frameworks as mentioned in the `ToDo`-[section](#ToDo) on this page.
 
-## Complete ruleset ##
+## Complete ruleset
 
 Assume a function `CheckGroup` where you have as parameter the index of the lower ball, the upper left and the upper right. If the rule is applicable, the function returns true, otherwise false. Based on this the complete ruleset looks like this one:
 
-```
-
+```C++
 Level1 = CheckGroup(0, 1, 2)
 Level2 = Level1 & CheckGroup(1, 3, 4) &
          CheckGroup(2, 4, 5)
@@ -63,9 +66,9 @@ Level4 = Level3 & CheckGroup(6, 10, 11) &
          CheckGroup(9, 13, 14)
 ```
 
-## Solution ##
+## Solution
 
-There are two solutions. They are symmetric at the y-axis. I'll show only one:
+There are two solutions:
 
 | Level |       |       |       |       |       |       |       |       |       |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -75,17 +78,22 @@ There are two solutions. They are symmetric at the y-axis. I'll show only one:
 |     1 |       |       |       |     4 |       |     9 |       |       |       |
 |     0 |       |       |       |       |     5 |       |       |       |       |
 
+| Level |       |       |       |       |       |       |       |       |       |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|     4 |    13 |       |     3 |       |    15 |       |    14 |       |     6 |
+|     3 |       |    10 |       |    12 |       |     1 |       |     8 |       |
+|     2 |       |       |     2 |       |    11 |       |     7 |       |       |
+|     1 |       |       |       |     9 |       |     4 |       |       |       |
+|     0 |       |       |       |       |     5 |       |       |       |       |
 
-## License ##
-
-[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0 "LGPL-3.0")
-
-**Billiard** is distributed under the terms of the **GNU LESSER GENERAL PUBLIC LICENSE**, version 3.0. The text of the license is included in the file **LICENSE.TXT** in the project root.
-
-## <a name="ToDo"></a>ToDo ##
+## <a name="ToDo"></a>ToDo
 
 Speed up the brute force. Evaluate these frameworks and apply a solution to the puzzle solver source.
 
-* [Cuda](https://developer.nvidia.com/about-cuda)
-* [OpenCL](https://www.khronos.org/opencl/)
-* [OpenMP](http://www.openmp.org/)
+- [Cuda]
+- [OpenCL]
+- [OpenMP]
+
+[Cuda]: https://developer.nvidia.com/about-cuda/
+[OpenCL]: https://www.khronos.org/opencl/
+[OpenMP]: http://www.openmp.org/
