@@ -72,10 +72,6 @@ namespace net
 						Solution.pop_back();
 						continue;
 					}
-					if (Solution.size() == BallMax)
-					{
-						ShowBalls(Solution);
-					}
 
 					CheckPermutation(Solution, BallsAvailableNext);
 					Solution.pop_back();
@@ -128,10 +124,10 @@ namespace net
 					Abort = (false == CheckGroup(Solution[8], Solution[12], Solution[13]));
 					break;
 				case 15:
-					if (true == CheckGroup(Solution[9], Solution[13], Solution[14]))
+					Abort = (false == CheckGroup(Solution[9], Solution[13], Solution[14]));
+					if (!Abort)
 					{
 						ShowBalls(Solution);
-						Abort = true;
 					}
 					break;
 				}

@@ -57,7 +57,7 @@ Assume a function `CheckGroup` where you have as parameter the index of the lowe
 Level1 = CheckGroup(0, 1, 2)
 Level2 = Level1 & CheckGroup(1, 3, 4) &
          CheckGroup(2, 4, 5)
-Level3 = Level2 & CheckGroup(4, 6, 7) &
+Level3 = Level2 & CheckGroup(3, 6, 7) &
          CheckGroup(4, 7, 8) &
          CheckGroup(5, 8, 9)
 Level4 = Level3 & CheckGroup(6, 10, 11) &
